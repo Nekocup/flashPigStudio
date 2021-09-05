@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: DFKai-sb;
+}
+.banner img{
+    width: 100%;
+    max-width: 651px;
+    display: block;
+    margin: auto;
+}

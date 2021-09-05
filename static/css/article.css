@@ -1,0 +1,49 @@
+
+article h1 {
+    text-align: center;
+    padding-top: 1em;
+}
+
+.workEvn p{
+    font-size: 16px;
+}
+
+.workEvn img{
+    display: block;
+    margin: auto;
+    width: 85%;
+    max-width: 430px;
+}
+
+.workEvn ol {
+    margin: auto;
+    width: 80%;
+    padding: 1em;
+}
+.workEvn ol li {
+    padding: .5em;
+}
+
+@media screen and (min-width:768px){
+    .workEvn {
+        display: flex;
+    }
+    .workEvn div:first-child{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+    }
+    .workEvn div {
+        width: 100%;
+    }
+    .workEvn p{
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width:1000px){
+    .workEvn p{
+        font-size: 22px;
+    }   
+    
+}
