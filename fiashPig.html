@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>閃光豬電腦維修工作室 | 系統安裝 / 硬體修護 / 到府檢測 / 組裝升級|( 澎湖店 )</title>
         <meta name="description" content="大家好，這裡是閃光豬電腦維修工作室，桌機筆電快速維修檢測維修，測試電腦硬體問題及系統設置維護，協助零件配備升級等，目前全省皆可配合，詳細資訊歡迎來電洽詢。目前致力於澎湖馬公、湖西、白沙及西嶼地區電腦故障檢修服務。">
+        <link href="./static/css/all.css" rel="stylesheet">
         <link href="./static/css/header.css" rel="stylesheet">
         <link href="./static/css/article.css" rel="stylesheet">
         <link href="./static/css/footer.css" rel="stylesheet">
     </head>
-    
-   <!-- <script src="node_modules/vue/dist/vue.js"></script> -->
+
     <body>
         <div id="app">
             <header>
@@ -21,7 +21,7 @@
             </header>
             <main>
             <article>
-                <div class="service">
+                <div class="service articleCenterMaxWidth">
                     <div>
                         <img src="./static/image/workEvn.jpg" alt="">
                     </div>
@@ -48,7 +48,7 @@
                 </div>
             </article>
             <article>
-                <div class="physicalstore">
+                <div class="physicalstore articleCenterMaxWidth">
                     <div><img src="./static/image/map.png" alt=""></div>
                     <div>
                         <div>
@@ -65,17 +65,57 @@
                     </div>
                 </div>
             </article>
+            <article>
+                <div class="repair articleCenterMaxWidth">
+
+                    <div class="repairForm">
+                        <form>
+                            <h1>線上報修申請</h1>
+                            <input type="text" placeholder="姓名" v-model="repaireForm.name">
+                            <input type="text" placeholder="聯絡方式" v-model="repaireForm.phone">
+                            <textarea name="" id="" placeholder="問題描述" v-model="repaireForm.promble"></textarea>
+                            <button @click.prevent="repaireFormSubmit"><p>送出</p></button>
+                        </form>
+                        <div class="instructions">
+                            <h2>說明 :</h2>
+                            <ul>
+                                <li><p>所有報修機器會優先做測試再另報價，收件時不收取費用。</p></li>
+                                <li><p>電腦送測檢修前請務必將重要資料備份，本工作室不負責資料保全。</p></li>
+                                <li><p>本工作室安裝軟體授權不負授權責任，為保護您的權益，請支持正版系統。</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </main>
-            <footer><p>© 2021 FlashPig.All rights reserved.</p></footer>
+        <footer><p>© 2021 FlashPig.All rights reserved.</p></footer>
         </div>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
     <script>
-        // new Vue({el: "#app", data: {}})
+        new Vue({
+            el: "#app", 
+            data: {
+                repaireForm:{
+                    name :"",
+                    phone: "",
+                    promble: ""
+                },
+            },
+            methods: {
+                repaireFormSubmit(){
+                    emailjs.init('user_tZErT8t5CEvb4AXwEX3Xz')
+                    emailjs.send('default_service', 'template_dmiyd2k', {name:this.repaireForm.name, phone:this.repaireForm.phone,message:this.repaireForm.promble})
+                    .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    }, function(error) {
+                    console.log('FAILED...', error);
+                    });  
+                }
+            },
+        })
     </script>
-    <style>
-        main {
-            max-width: 1200px;
-            margin: auto;
-        }
-    </style>
 </html>
