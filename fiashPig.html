@@ -69,12 +69,12 @@
                 <div class="repair articleCenterMaxWidth">
 
                     <div class="repairForm">
-                        <form>
+                        <form @submit.prevent="sendEmail">
                             <h1>線上報修申請</h1>
-                            <input type="text" placeholder="姓名" v-model="repaireForm.name">
-                            <input type="text" placeholder="聯絡方式" v-model="repaireForm.phone">
-                            <textarea name="" id="" placeholder="問題描述" v-model="repaireForm.promble"></textarea>
-                            <button @click.prevent="repaireFormSubmit"><p>送出</p></button>
+                            <input type="text" placeholder="姓名" name="name">
+                            <input type="text" placeholder="聯絡方式" name="phone">
+                            <textarea id="" placeholder="問題描述" name="message"></textarea>
+                            <input type="submit" value="送出">
                         </form>
                         <div class="instructions">
                             <h2>說明 :</h2>
@@ -99,21 +99,14 @@
         new Vue({
             el: "#app", 
             data: {
-                repaireForm:{
-                    name :"",
-                    phone: "",
-                    promble: ""
-                },
             },
             methods: {
-                repaireFormSubmit(){
-                    emailjs.init('user_tZErT8t5CEvb4AXwEX3Xz')
-                    emailjs.send('default_service', 'template_dmiyd2k', {name:this.repaireForm.name, phone:this.repaireForm.phone,message:this.repaireForm.promble})
-                    .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    }, function(error) {
-                    console.log('FAILED...', error);
-                    });  
+                sendEmail(e){
+                    emailjs.sendForm('default_service','template_dmiyd2k',e.target,'user_tZErT8t5CEvb4AXwEX3Xz').then((result) => {
+                        console.log('SUCCESS!', result.status, result.text);
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
                 }
             },
         })

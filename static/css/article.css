@@ -92,7 +92,7 @@ article span {
   font-size: 14px;
   min-height: 100px;
 }
-.repairForm button {
+.repairForm input[type="submit"] {
   box-sizing: border-box;
   width: 100%;
   padding: 0.5em;
@@ -101,10 +101,10 @@ article span {
   color: white;
   border: 0;
 }
-.repairForm button:hover {
+.repairForm input[type="submit"]:hover {
   background: #3b6f97;
 }
-.repairForm button:active {
+.repairForm input[type="submit"]:active {
   background: #4f96cc;
 }
 .instructions {
