@@ -23,11 +23,11 @@
     width: 13px;
     height: 30px;
     background-color: white;
-    transform:  translateX(25px)  translateY(50px) rotate(-45deg);
+    transform:  translateX(22px)  translateY(50px) rotate(-45deg);
 }
 
 .sendSuccess > div span:last-child{
     height: 70px;
     background-color: white;
-    transform: translateX(56px)  translateY(-9px) rotate(45deg);
+    transform: translateX(53px)  translateY(-9px) rotate(45deg);
 }
